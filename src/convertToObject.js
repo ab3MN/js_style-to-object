@@ -5,19 +5,17 @@
  *
  * @return {object}
  */
+
 function convertToObject(sourceString) {
-  const styles = sourceString
-    .split(';')
-    .map((style) => style.split(':'))
-    .reduce((acc, [key, value]) => {
-      if ((key, value)) {
-        const [_key, _value] = [key.trim(), value.trim()];
+  const styles = sourceString.split(';').reduce((acc, next) => {
+    const [key, value] = next.split(':');
 
-        acc[_key] = _value;
-      }
+    if ((key, value)) {
+      acc[key.trim()] = value.trim();
+    }
 
-      return acc;
-    }, {});
+    return acc;
+  }, {});
 
   return styles;
 }
